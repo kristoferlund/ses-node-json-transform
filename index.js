@@ -1,3 +1,6 @@
+require('ses');
+lockdown();
+
 // DataTransform
 
 var _ = require('lodash');
@@ -113,27 +116,29 @@ var DataTransform = function(data, map){
 		operate: function(data, context) {
 
 			if(map.operate) {
+				const c = new Compartment({
+					Math,
+				});
 				_.each(map.operate, _.bind(function(method){
 					data = _.map(data, _.bind(function(item){
-						var fn;
-						if( 'string' === typeof method.run ) {
-							fn = eval( method.run );
-						} else {
-							fn = method.run;
-						}
-						this.setValue(item,method.on,fn(this.getValue(item,method.on), context));
+						const fn = c.evaluate(method.run);
+						const val = this.getValue(item, method.on);
+						this.setValue(item,method.on, fn(val, context));
 						return item;
 					},this));
 				},this));
 			}
 			return data;
-
 		},
 
 		each: function(data, context){
 			if( map.each ) {
-				_.each(data, function (value, index, collection) {
-					return map.each(value, index, collection, context);
+			const c = new Compartment({
+				Math,
+			});
+			_.each(data, function (value, index, collection) {
+				const fn = c.evaluate(map.each);
+				return fn(value, index, collection, context);
 				});
 			}  
 			return data;

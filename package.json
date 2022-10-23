@@ -1,14 +1,15 @@
 {
-  "name": "node-json-transform",
-  "version": "1.1.2",
+  "name": "ses-node-json-transform",
+  "version": "0.0.1",
   "description": "A node module for transforming and performing operations on JSON.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "node_modules/jasmine-node/bin/jasmine-node test/"
+    "test": "node_modules/jasmine-node/bin/jasmine-node --verbose test/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bozzltron/node-json-transform"
+    "url": "https://github.com/kristoferlund/ses-node-json-transform"
   },
   "keywords": [
     "json",
@@ -18,15 +19,16 @@
   "author": "Michael Bosworth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bozzltron/node-json-transform/issues"
+    "url": "https://github.com/kristoferlund/ses-node-json-transform/issues"
   },
-  "homepage": "https://github.com/bozzltron/node-json-transform",
+  "homepage": "https://github.com/kristoferlund/ses-node-json-transform",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "ses": "^0.16.0"
   },
   "devDependencies": {
     "deep-freeze": "0.0.1",
-    "jasmine-node": "^3.0.0",
+    "jasmine-node": "^1.16.0",
     "underscore": "^1.13.1"
   }
 }
