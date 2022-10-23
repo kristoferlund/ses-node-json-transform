@@ -20,23 +20,23 @@ var map = {
 		}
 	},
 	operate: [{
-		run: (val) => 'replacement',
+		run: '() => "replacement"',
 		on: 'subObject.subSubObject.node1'
 	},
 	{
-		run: (val) => 'replacement',
+		run: '() => "replacement"',
 		on: 'errorReplace'
 	},
 	{
-		run: (val) => 'replacement',
+		run: '() => "replacement"',
 		on: 'toReplace'
 	},
 		{
-		run: (val) => 'replacement',
+		run: '() => "replacement"',
 		on: 'simpleArray.2'
 	},
 	{
-		run: (val) => 'replacement',
+		run: '() => "replacement"',
 		on: 'complexArray.2.toReplace'
 	},]
 };

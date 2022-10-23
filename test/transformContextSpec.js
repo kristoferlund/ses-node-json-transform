@@ -14,9 +14,9 @@ var map = {
 		greeting: "title"
 	},
 	operate: [{
-		run: function customFn( item, context ){
-			return context.intro + item;
-		},
+		run: `
+			(val, context) => (context.intro + val)
+		`,
 		on: "greeting"
 	}]
 };

@@ -32,14 +32,16 @@ var map = {
 		info: "list1.0.name"
 	},
 	operate: [{
-		run: "Date.parse",
+		run: "(val) => Date.parse(val)",
 		on: "date"
 	},{
-		run: function customFn( item ){
-			if( 'string' === typeof item )
-				return item.toUpperCase();
-			return item.toString().toUpperCase();
-		},
+		run: ` 
+		  (val) => {
+			  if( 'string' === typeof val )
+				  return val.toUpperCase();
+			  return val.toString().toUpperCase();
+		  }
+		`,
 		on: "name"
 	}]
 };
@@ -193,9 +195,11 @@ describe("node-json-transform", function() {
 		var newMap = _.clone(map);
 
 		newMap.operate = [{
-			run: function (val){ 
-				return val + " more info"; 
-			}, 
+			run: `
+			  (val) => { 
+				  return val + " more info"; 
+			  }
+			`, 
 			on: "info"
 		}];
 
@@ -216,15 +220,19 @@ describe("node-json-transform", function() {
 
 		newMap.operate = [
 			{
-				run: function (val){ 
-					return val + " more info"; 
-				}, 
+				run: `
+				  (val) => { 
+					  return val + " more info"; 
+				  }
+			  `, 
 				on: "info"
 			},
 			{
-				run: function (val){ 
-					return val + " more text"; 
-				}, 
+				run: `
+					(val) => { 
+					  return val + " more text"; 
+				  }
+				`, 
 				on: "text"
 			}
 		];
@@ -254,10 +262,12 @@ describe("node-json-transform", function() {
 
 		var map = {
 			list: 'posts',
-			each: function(item){
-				item.iterated = true;
-				return item;
-			}
+			each: `
+        (item) => {
+				  item.iterated = true;
+				  return item;
+			  }
+			`
 		};
 
 		var dataTransform = DataTransform(data, map);
@@ -286,10 +296,12 @@ describe("node-json-transform", function() {
 			item: {
 				title: 'name',
 			},
-			each: function(item){
-				item.iterated = true;
-				return item;
-			}
+			each: `
+				(item) => {
+					item.iterated = true;
+					return item;
+				}
+			`
 		};
 
 		var dataTransform = DataTransform(data, map);
