@@ -1,7 +1,4 @@
 require('ses');
-lockdown();
-
-// DataTransform
 
 var _ = require('lodash');
 

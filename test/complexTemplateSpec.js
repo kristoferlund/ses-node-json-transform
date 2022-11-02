@@ -1,5 +1,9 @@
 var transform = require('../index.js').transform,
-	_ = require("lodash");
+_ = require("lodash");
+
+// ses lockdown should be called before any other code but only once in onw project
+require('ses');
+lockdown();
 
 var map = {
 	item: {

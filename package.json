@@ -1,6 +1,6 @@
 {
   "name": "ses-node-json-transform",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A node module for transforming and performing operations on JSON.",
   "main": "index.js",
   "types": "index.d.ts",

@@ -8,14 +8,21 @@ From SES README:
 
 ## Installation
 
-```javascript
-npm install ses-node-json-transform --save
+In addition to `ses-node-json-transform` you also need to install `ses`.
+
+```bash
+npm install ses-node-json-transform ses --save
 ```
 
 ### Get Started
 
+Import `ses` and call `lockdown()` before running any transformations. `lockdown()` accepts parameters to configure the SES environment. See [SES README](https://github.com/endojs/endo/blob/5003d9282b92d371899cfabc7ded714f5d80e06f/packages/ses/docs/lockdown.md) for more information. When running SES in a Node project, you most likely need to pass `lockdown({ domainTaming: 'unsafe' })` to support modules that depend on the `domain` module.
+
 ```javascript
+import "ses";
 import { transform } from "ses-node-json-transform";
+
+lockdown();
 
 const data = [
   {
